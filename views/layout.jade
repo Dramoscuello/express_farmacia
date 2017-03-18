@@ -36,6 +36,7 @@ html(lang='es')
           fieldset
           if isAuthenticated
             input(id="m" type='text', placeholder='Escribenos un mensaje…', autofocus='')
+            input(id="u" type="hidden" value=user.nombre)
             button.btn.btn-enviar Enviar
           if !isAuthenticated
             input(id="d" type='text', placeholder='Inicie sesión' disabled)
