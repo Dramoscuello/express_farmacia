@@ -27,8 +27,11 @@ module.exports = {
 
 			db.end();
 		});
-    //req.flash('info', 'Se ha registrado correctamente, ya puede iniciar sesion');
-    //return res.redirect('/auth/signin');
-    return;
-  }
+    req.flash('info', 'Se ha registrado correctamente, ya puede iniciar sesion');
+    return res.redirect('/signin');
+  },
+
+  getSignIn: function(req, res, next){
+		return res.render('signin', {message: req.flash('info')});
+	}
 };
