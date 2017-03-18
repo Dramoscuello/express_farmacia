@@ -72,16 +72,15 @@ html(lang='es')
                     a(href='#') Maquillaje y accesorios
                   li
                     a(href='/medicamentos') Medicina formulada
-              li.dropdown
-                a.dropdown-toggle(href='#', data-toggle='dropdown')
-                  span.badge.custom-badge.red.pull-right
-                  | Mi cuenta
-                  b.caret
-                ul.dropdown-menu
-                  li
-                    a(href='/signin') Iniciar sesion
-                  li
-                    a(href='/signup') Registrarme
+              if !isAuthenticated
+                li.dropdown
+                  a.dropdown-toggle(href='#', data-toggle='dropdown') Mi cuenta
+                    b.caret
+                  ul.dropdown-menu
+                    li
+                      a(href='/signin') Iniciar sesion
+                    li
+                      a(href='/signup') Registrarme
               li.dropdown
                 a.dropdown-toggle(href='#', data-toggle='dropdown')
                   span.badge.custom-badge.red.pull-right 0
@@ -92,17 +91,13 @@ html(lang='es')
                     a(href='#') xxxx
                   li
                     a(href='#') xxx
-              li.dropdown
-                a.dropdown-toggle(href='#', data-toggle='dropdown')
-                  span.badge.custom-badge.red.pull-right
-                  | Usuario
-                  b.caret
-                ul.dropdown-menu
-                  li
-                    a(href='') Cerrar sesion
-          // /.navbar-collapse
-        // /.container
-      // Section: intro
+              if isAuthenticated
+                li.dropdown
+                  a.dropdown-toggle(href='#', data-toggle='dropdown')=user.nombre
+                    b.caret
+                  ul.dropdown-menu
+                    li
+                      a(href='/logout') Cerrar sesion
 
       block content
 

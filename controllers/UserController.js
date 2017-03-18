@@ -33,5 +33,9 @@ module.exports = {
 
   getSignIn: function(req, res, next){
 		return res.render('signin', {message: req.flash('info')});
+	},
+  logout : function(req, res, next){
+		req.logout();
+		res.redirect('/');
 	}
 };
