@@ -1,0 +1,105 @@
+footer
+  .container
+    .row
+      .col-sm-6.col-md-4
+        .wow.fadeInDown(data-wow-delay='0.1s')
+          .widget
+            h5 acerca de  drogeria SuperFamilia
+            p
+              | xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+        .wow.fadeInDown(data-wow-delay='0.1s')
+          .widget
+            h5 Informacion
+            ul
+              li
+                a(href='#') Inicio
+              li
+                a(href='#') Laboratorios
+              li
+                a(href='#') Terminos & condiciones
+      .col-sm-6.col-md-4
+        .wow.fadeInDown(data-wow-delay='0.1s')
+          .widget
+            h5 Sucursales
+            p
+              | principales ciudades como: Bogota Monteria Medellin Barranquilla ..
+            ul
+              li
+                span.fa-stack.fa-lg
+                  i.fa.fa-circle.fa-stack-2x
+                  i.fa.fa-calendar-o.fa-stack-1x.fa-inverse
+                |  lunes - viernes, 8am a 10pm
+              li
+                span.fa-stack.fa-lg
+                  i.fa.fa-circle.fa-stack-2x
+                  i.fa.fa-phone.fa-stack-1x.fa-inverse
+                |  018000959656
+              li
+                span.fa-stack.fa-lg
+                  i.fa.fa-circle.fa-stack-2x
+                  i.fa.fa-envelope-o.fa-stack-1x.fa-inverse
+                |  Superfamilia@gmail.com
+      .col-sm-6.col-md-4
+        .wow.fadeInDown(data-wow-delay='0.1s')
+          .widget
+            h5 Direccion
+            p av .vicentenario  frente la bomba
+        .wow.fadeInDown(data-wow-delay='0.1s')
+          .widget
+            h5 Compatir
+            ul.company-social
+              li.social-facebook
+                a(href='#')
+                  i.fa.fa-facebook
+              li.social-twitter
+                a(href='#')
+                  i.fa.fa-twitter
+              li.social-google
+                a(href='#')
+                  i.fa.fa-google-plus
+              li.social-vimeo
+                a(href='#')
+                  i.fa.fa-vimeo-square
+              li.social-dribble
+                a(href='#')
+                  i.fa.fa-dribbble
+  .sub-footer
+    .container
+      .row
+        .col-sm-6.col-md-6.col-lg-6
+          .wow.fadeInLeft(data-wow-delay='0.1s')
+            .text-left
+              p ©Copyright - SuperFamilia - 2017 - Desing by
+                a(href='#') BitKlan
+
+//a.scrollup(href='#')
+//i.fa.fa-angle-up.active
+// Core JavaScript Files
+script(src='js/jquery.min.js')
+script(src='js/bootstrap.min.js')
+script(src='js/jquery.easing.min.js')
+script(src='js/wow.min.js')
+script(src='js/jquery.scrollTo.js')
+script(src='js/jquery.appear.js')
+script(src='js/stellar.js')
+script(src='plugins/cubeportfolio/js/jquery.cubeportfolio.min.js')
+script(src='js/owl.carousel.min.js')
+script(src='js/nivo-lightbox.min.js')
+script(src='js/custom.js')
+script(src='js/chat.js')
+script(src='https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.2.0/socket.io.js')
+
+script(type='text/javascript').
+  //var socket = io();
+  var socket = io.connect("http://localhost:3000");
+  $('.form-chat').submit(function(){
+    socket.emit('chat message', $('#m').val());
+    $('#m').val('');
+    //$('#messages').prepend($('<li>').text($('#m').val()));
+    //$('#m').val('');
+    return false;
+  });
+
+  socket.on('chat message', function(msg){
+    $('#messages').prepend($('<li>').text(msg));
+  });
