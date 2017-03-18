@@ -34,8 +34,12 @@ html(lang='es')
             ul(id="messages")
         form.form-chat(action='', id="chatter" autocomplete='off')
           fieldset
+          if isAuthenticated
             input(id="m" type='text', placeholder='Escribenos un mensaje…', autofocus='')
             button.btn.btn-enviar Enviar
+          if !isAuthenticated
+            input(id="d" type='text', placeholder='Inicie sesión' disabled)
+            button.btn.btn-enviar(disabled) Enviar
     #wrapper
       nav.navbar.navbar-custom.navbar-fixed-top(role='navigation')
         .top-area
