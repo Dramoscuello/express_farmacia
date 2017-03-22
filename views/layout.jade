@@ -89,13 +89,7 @@ html(lang='es')
               li.dropdown
                 a.dropdown-toggle(href='#', data-toggle='dropdown')
                   span.badge.custom-badge.red.pull-right 0
-                  | Carrito
-                  b.caret
-                ul.dropdown-menu
-                  li
-                    a(href='#') xxxx
-                  li
-                    a(href='#') xxx
+                  | <i class="fa fa-shopping-cart fa-2x" aria-hidden="true"></i>
               if isAuthenticated
                 li.dropdown
                   a.dropdown-toggle(href='#', data-toggle='dropdown')=user.nombre
