@@ -11,3 +11,34 @@
   margin:5%;
   text-align: center;
 }
+
+.item-med{
+  margin-bottom: 10%;
+}
+
+.cart{
+  border: none;
+  background: #3FBBC0;
+  color: #f2f2f2;
+  padding: 10px 35px;
+  overflow:hidden;
+  font-size: 18px;
+  border-radius: 5px;
+  position: relative;
+  box-sizing: border-box;
+  transition: all 500ms ease;
+  margin-top: 2%;
+}
+
+.cart:before {
+ font-family: FontAwesome;
+ content:"\f07a";
+ position: absolute;
+ top: 11px;
+ left: -30px;
+ transition: all 200ms ease;
+}
+
+.cart:hover:before {
+ left: 7px;
+}

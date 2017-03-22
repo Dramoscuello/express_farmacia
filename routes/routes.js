@@ -14,4 +14,7 @@ router.post('/signin',  passport.authenticate('local', {
 }));
 router.get('/logout', controllers.UserController.logout);
 
+
+router.get('/medicamentos', controllers.medicamentosController.getMedicamentos);
+
 module.exports = router;
