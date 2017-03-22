@@ -7,7 +7,7 @@ module.exports = {
 		db.connect();
 		db.query('SELECT nombre, descripcion, imagen, precio FROM productos where categoria=4', function(err, rows, fields){
 			if(err) throw err;
-      res.render('medicamentos', { medicamentos: rows });
+      res.render('medicamentos', { medicamentos: rows, isAuthenticated : req.isAuthenticated(), user : req.user });
 			db.end();
 		});
     return 0;

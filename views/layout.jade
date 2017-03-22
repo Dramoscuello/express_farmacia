@@ -62,7 +62,7 @@ html(lang='es')
               li.active
                 a(href='/') Inicio
               li
-                a(href='#service') Servicios
+                a(href='/#service') Servicios
               li.dropdown
                 a.dropdown-toggle(href='#', data-toggle='dropdown')
                   span.badge.custom-badge.red.pull-right
@@ -86,10 +86,6 @@ html(lang='es')
                       a(href='/signin') Iniciar sesion
                     li
                       a(href='/signup') Registrarme
-              li.dropdown
-                a.dropdown-toggle(href='#', data-toggle='dropdown')
-                  span.badge.custom-badge.red.pull-right 0
-                  | <i class="fa fa-shopping-cart fa-2x" aria-hidden="true"></i>
               if isAuthenticated
                 li.dropdown
                   a.dropdown-toggle(href='#', data-toggle='dropdown')=user.nombre
@@ -97,6 +93,10 @@ html(lang='es')
                   ul.dropdown-menu
                     li
                       a(href='/logout') Cerrar sesion
+              li.dropdown
+                a.dropdown-toggle(href='#', data-toggle='dropdown')
+                  span.badge.custom-badge.red.pull-right 0
+                  | <i class="fa fa-shopping-cart fa-2x" aria-hidden="true"></i>
 
       block content
 
