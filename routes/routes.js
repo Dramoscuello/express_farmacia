@@ -17,4 +17,8 @@ router.get('/logout', controllers.UserController.logout);
 
 router.get('/medicamentos', controllers.medicamentosController.getMedicamentos);
 
+router.get('/alimento-y-bebidas', controllers.alimentoController.getAlimento);
+router.get('/aseo-y-hogar', controllers.hogarController.getHogar);
+router.get('/maquillaje-y-accesorios', controllers.accesoriosController.getAccesorios);
+
 module.exports = router;
