@@ -30,8 +30,10 @@ module.exports = function(passport){
           if(bcrypt.compareSync(password, user.password)){
             return done(null, {
               id: user.id,
-              nombre : user.nombre,
-              email : user.email
+              nombres : user.nombres,
+							apellidos : user.apellidos,
+							email : user.email,
+				      rol : user.rol
             });
           }
         }

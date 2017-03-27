@@ -11,9 +11,14 @@ module.exports = {
     var password = bcrypt.hashSync(req.body.password, salt);
 
 		var user = {
+      id : req.body.id,
+      nombres : req.body.nombres,
+      apellidos : req.body.apellidos,
 			email : req.body.email,
-			nombre : req.body.nombre,
-			password : password
+			password : password,
+      telefono : req.body.telefono,
+      direccion : req.body.direccion,
+      rol : "2",
 		};
 
     var config = require('.././database/config');
