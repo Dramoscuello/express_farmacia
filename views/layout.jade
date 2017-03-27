@@ -36,7 +36,7 @@ html(lang='es')
           fieldset
           if isAuthenticated
             input(id="m" type='text', placeholder='Escribenos un mensaje…', autofocus='' required="required")
-            input(id="u" type="hidden" value=user.nombre)
+            input(id="u" type="hidden" value=user.nombres)
             button.btn.btn-enviar Enviar
           if !isAuthenticated
             input(id="d" type='text', placeholder='Inicie sesión' disabled)
@@ -63,20 +63,21 @@ html(lang='es')
                 a(href='/') Inicio
               li
                 a(href='/#service') Servicios
-              li.dropdown
-                a.dropdown-toggle(href='#', data-toggle='dropdown')
-                  span.badge.custom-badge.red.pull-right
-                  | Productos
-                  b.caret
-                ul.dropdown-menu
-                  li
-                    a(href='/alimento-y-bebidas') Alimento y bebidas
-                  li
-                    a(href='/aseo-y-hogar') Aseo y hogar
-                  li
-                    a(href='/maquillaje-y-accesorios') Maquillaje y accesorios
-                  li
-                    a(href='/medicamentos') Medicina formulada
+              if (isAuthenticated && user.rol == "2") || (!isAuthenticated)
+                li.dropdown
+                  a.dropdown-toggle(href='#', data-toggle='dropdown')
+                    span.badge.custom-badge.red.pull-right
+                    | Productos
+                    b.caret
+                  ul.dropdown-menu
+                    li
+                      a(href='/alimento-y-bebidas') Alimento y bebidas
+                    li
+                      a(href='/aseo-y-hogar') Aseo y hogar
+                    li
+                      a(href='/maquillaje-y-accesorios') Maquillaje y accesorios
+                    li
+                      a(href='/medicamentos') Medicina formulada
               if !isAuthenticated
                 li.dropdown
                   a.dropdown-toggle(href='#', data-toggle='dropdown') Mi cuenta
@@ -86,6 +87,23 @@ html(lang='es')
                       a(href='/signin') Iniciar sesion
                     li
                       a(href='/signup') Registrarme
+              if (isAuthenticated && user.rol == "1")
+                li.dropdown
+                  a.dropdown-toggle(href='#', data-toggle='dropdown')
+                    span.badge.custom-badge.red.pull-right
+                    | Gestionar productos
+                    b.caret
+                  ul.dropdown-menu
+                    li
+                      a(href='#') Alimento y bebidas
+                    li
+                      a(href='#') Aseo y hogar
+                    li
+                      a(href='#') Maquillaje y accesorios
+                    li
+                      a(href='#') Medicina formulada
+                li
+                  a(href='#') Gestionar usuarios
               if isAuthenticated
                 li.dropdown
                   a.dropdown-toggle(href='#', data-toggle='dropdown')=user.nombres
@@ -93,10 +111,11 @@ html(lang='es')
                   ul.dropdown-menu
                     li
                       a(href='/logout') Cerrar sesion
-              li.dropdown
-                a.dropdown-toggle(href='#', data-toggle='dropdown')
-                  span.badge.custom-badge.red.pull-right 0
-                  | <i class="fa fa-shopping-cart fa-2x" aria-hidden="true"></i>
+              if (isAuthenticated && user.rol == "2") || (!isAuthenticated)
+                li.dropdown
+                  a.dropdown-toggle(href='#', data-toggle='dropdown')
+                    span.badge.custom-badge.red.pull-right 0
+                    | <i class="fa fa-shopping-cart fa-2x" aria-hidden="true"></i>
 
       block content
 
