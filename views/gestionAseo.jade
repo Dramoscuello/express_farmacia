@@ -2,12 +2,12 @@ extends layout
 block content
   .intro-med
     div(class='row')
-    -for(var i=0; i<alimentos.length; ++i){
+    -for(var i=0; i<aseo.length; ++i){
       .col-sm-6.item-med
-        h4=alimentos[i].nombre
-        img(src="img/bebidas/#{alimentos[i].imagen}", width="200")
-        p="Descripción: " + alimentos[i].descripcion
-        strong="$"+alimentos[i].precio
+        h4=aseo[i].nombre
+        img(src="img/hogar/#{aseo[i].imagen}", width="200")
+        p="Descripción: " + aseo[i].descripcion
+        strong="$"+aseo[i].precio
         div.container-btn
           a.button.btn-edit(href="#")
             i.fa.fa-pencil-square-o(aria-hidden="true")

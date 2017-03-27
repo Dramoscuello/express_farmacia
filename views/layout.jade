@@ -96,13 +96,15 @@ html(lang='es')
                     b.caret
                   ul.dropdown-menu
                     li
+                      a(href="#") Nuevo producto
+                    li
                       a(href='/gestionar-alimento') Alimento y bebidas
                     li
-                      a(href='#') Aseo y hogar
+                      a(href='/gestionar-aseo') Aseo y hogar
                     li
-                      a(href='#') Maquillaje y accesorios
+                      a(href='/gestionar-maquillaje') Maquillaje y accesorios
                     li
-                      a(href='#') Medicina formulada
+                      a(href='/gestionar-medicina') Medicina formulada
                 li
                   a(href='#') Gestionar usuarios
               if isAuthenticated

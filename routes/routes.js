@@ -22,5 +22,8 @@ router.get('/aseo-y-hogar', controllers.hogarController.getHogar);
 router.get('/maquillaje-y-accesorios', controllers.accesoriosController.getAccesorios);
 
 router.get('/gestionar-alimento', controllers.adminProductosController.getAlimentos);
+router.get('/gestionar-aseo', controllers.adminProductosController.getAseo);
+router.get('/gestionar-maquillaje', controllers.adminProductosController.getMaquillaje);
+router.get('/gestionar-medicina', controllers.adminProductosController.getMedicina);
 
 module.exports = router;
