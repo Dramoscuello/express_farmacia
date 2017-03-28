@@ -15,14 +15,14 @@ module.exports = {
       }
     });
     return 0;
-  },
+  }
 
-  deleteUsuario : function(req, res, next){
+  /*deleteUsuario : function(req, res, next){
     var db = mysql.createConnection(config);
 		db.connect();
 		db.query('DELETE FROM users WHERE id = ' + [req.params.id], function(err, rows, fields){
 			if(err) throw err;
     });
     return res.redirect('/gestionar-usuarios');
-  }
+  }*/
 };
