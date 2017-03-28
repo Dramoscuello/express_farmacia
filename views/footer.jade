@@ -92,6 +92,8 @@ script(src="https://use.fontawesome.com/7f08727939.js")
 
 script(type='text/javascript').
   var socket = io.connect("http://localhost:3000");
+  var cuantosLi = 0;
+  var audio = new Audio('audio/mensaje.mp3');
   $('.form-chat').submit(function(){
     socket.emit('chat message', $('#u').val() + ": " + $('#m').val());
     $('#m').val('');
@@ -100,4 +102,20 @@ script(type='text/javascript').
 
   socket.on('chat message', function(msg){
     $('#messages').append($('<li>').text(msg));
+    contarMensajes();
+    sonido();
   });
+
+  $('#live-chat header').on('click', function(){});
+
+  function contarMensajes(){
+    cuantosLi = 0;
+    jQuery("#messages li").each(function(index){
+      cuantosLi += 1;
+    });
+    $('.chat-message-counter').text(cuantosLi);
+  }
+
+  function sonido(){
+      audio.play();
+  }

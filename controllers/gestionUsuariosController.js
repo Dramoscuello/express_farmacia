@@ -5,7 +5,7 @@ module.exports = {
   getUsuarios : function(req, res, next){
     var db = mysql.createConnection(config);
 		db.connect();
-		db.query('SELECT id, nombres, apellidos, email, password, telefono, direccion FROM users', function(err, rows, fields){
+		db.query('SELECT id, nombres, apellidos, email, password, telefono, direccion FROM users WHERE rol=2', function(err, rows, fields){
 			if(err) throw err;
 
       if(req.isAuthenticated() && req.user.rol == "1"){
