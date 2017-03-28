@@ -26,4 +26,7 @@ router.get('/gestionar-aseo', controllers.adminProductosController.getAseo);
 router.get('/gestionar-maquillaje', controllers.adminProductosController.getMaquillaje);
 router.get('/gestionar-medicina', controllers.adminProductosController.getMedicina);
 
+router.get('/gestionar-usuarios', controllers.gestionUsuariosController.getUsuarios);
+router.get('/eliminarUsuario:id', controllers.gestionUsuariosController.deleteUsuario);
+
 module.exports = router;
