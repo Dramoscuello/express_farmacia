@@ -2,17 +2,19 @@ extends layout
 block content
   .container.intro-med
     div(class='row')
-    -for(var i=0; i<maquillaje.length; ++i){
-      .col-sm-6.item-med
-        h4=maquillaje[i].nombre
-        img(src="img/#{maquillaje[i].imagen}", width="200")
-        p="Descripción: " + maquillaje[i].descripcion
-        strong="$"+maquillaje[i].precio
-        br
-        i="Cantidad: " + maquillaje[i].cantidad
-        div.container-btn
-          a.button.btn-edit(href="#")
-            i.fa.fa-pencil-square-o(aria-hidden="true")
-          a.button.btn-delete(href="#")
-            i.fa.fa-trash(aria-hidden="true")
-    -}
+      if message.length > 0
+        div(class='alert alert-danger' role='alert')= message
+      -for(var i=0; i<maquillaje.length; ++i){
+        .col-sm-6.item-med
+          h4=maquillaje[i].nombre
+          img(src="img/#{maquillaje[i].imagen}", width="200")
+          p="Descripción: " + maquillaje[i].descripcion
+          strong="$"+maquillaje[i].precio
+          br
+          i="Cantidad: " + maquillaje[i].cantidad
+          div.container-btn
+            a.button.btn-edit(href="#")
+              i.fa.fa-pencil-square-o(aria-hidden="true")
+            a.button.btn-delete(href="/gestionar-maquillaje/eliminar/#{maquillaje[i].id}")
+              i.fa.fa-trash(aria-hidden="true")
+      -}

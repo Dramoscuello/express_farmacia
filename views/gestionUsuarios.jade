@@ -2,16 +2,18 @@ extends layout
 block content
   .container.intro-med
     div(class='row')
-    -for(var i=0; i<usuarios.length; ++i){
-      .col-sm-6.item-med
-        img(src="img/user.png")
-        p="identificación: " + usuarios[i].id
-        p="Nombres: " + usuarios[i].nombres
-        p="Apellidos: " + usuarios[i].apellidos
-        p="Email: " + usuarios[i].email
-        p="Telefono: " + usuarios[i].telefono
-        p="Dirección: " + usuarios[i].direccion
-        div.container-btn
-          a.button.btn-delete(href="/gestionar-usuarios/eliminarUsuario/#{usuarios[i].id}")
-            i.fa.fa-trash(aria-hidden="true")
-    -}
+      if message.length > 0
+        div(class='alert alert-danger' role='alert')= message
+      -for(var i=0; i<usuarios.length; ++i){
+        .col-sm-6.item-med
+          img(src="img/user.png")
+          p="Identificación: " + usuarios[i].id
+          p="Nombres: " + usuarios[i].nombres
+          p="Apellidos: " + usuarios[i].apellidos
+          p="Email: " + usuarios[i].email
+          p="Telefono: " + usuarios[i].telefono
+          p="Dirección: " + usuarios[i].direccion
+          div.container-btn
+            a.button.btn-delete(href="/gestionar-usuarios/eliminarUsuario/#{usuarios[i].id}")
+              i.fa.fa-trash(aria-hidden="true")
+      -}

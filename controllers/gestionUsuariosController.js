@@ -9,7 +9,7 @@ module.exports = {
 			if(err) throw err;
 
       if(req.isAuthenticated() && req.user.rol == "1"){
-        res.render('gestionUsuarios', {usuarios: rows, isAuthenticated : req.isAuthenticated(), user : req.user});
+        res.render('gestionUsuarios', {usuarios: rows, isAuthenticated : req.isAuthenticated(), user : req.user, message: req.flash('info')});
       }else{
         res.redirect('/');
       }
@@ -24,6 +24,7 @@ module.exports = {
 		db.query('DELETE FROM users WHERE id = ' + [req.params.id], function(err, rows, fields){
 			if(err) throw err;
     });
-    res.redirect('/gestionar-usuarios');
+    req.flash('info', 'Se ha eliminado el usuario');
+    return res.redirect('/gestionar-usuarios');
   }
 };
