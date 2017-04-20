@@ -1,5 +1,6 @@
 var mysql = require('mysql');
 var config = require('.././database/config');
+var fs = require("fs")
 
 module.exports = {
   getAlimentos : function(req, res, next){
@@ -71,10 +72,12 @@ module.exports = {
   },
 
   agregarProductoPost:function(req, res, next){
+    fs.rename(req.files.imagen.path, "public/img/"+req.files.imagen.name);
+    //console.log(req.files.imagen);
     var producto = {
       nombre : req.body.producto,
       descripcion : req.body.descripcion,
-      imagen : req.body.imagen,
+      imagen : req.files.imagen.name,
 			precio : req.body.precio,
       categoria : req.body.categoria,
       cantidad : req.body.cantidad

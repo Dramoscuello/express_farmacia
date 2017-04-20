@@ -9,7 +9,7 @@ block content
       -for(var i=0; i<accesorios.length; ++i){
         .col-sm-6.item-med
           h4=accesorios[i].nombre
-          img(src="img/accesorios/#{accesorios[i].imagen}", width="200")
+          img(src="img/#{accesorios[i].imagen}", width="200")
           p="Descripción: " + accesorios[i].descripcion
           strong="$"+accesorios[i].precio
           br

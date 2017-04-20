@@ -8,7 +8,7 @@ var flash = require('connect-flash');
 var session = require('express-session');
 var passport = require('passport');
 require('./passport/passport')(passport);
-
+var formidable = require("express-form-data");
 var routes= require('./routes/routes');
 
 var app = express();
@@ -20,6 +20,7 @@ app.use(session({
   saveUninitialized : false
 }));
 app.use(flash());
+app.use(formidable.parse({keepExtensions:true, uploadDir:"public/img"}));
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));

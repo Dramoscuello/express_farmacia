@@ -9,7 +9,7 @@ block content
       -for(var i=0; i<medicamentos.length; ++i){
         .col-sm-6.item-med
           h4=medicamentos[i].nombre
-          img(src="img/medicamentos/#{medicamentos[i].imagen}", width="200")
+          img(src="img/#{medicamentos[i].imagen}", width="200")
           p="Descripción: " + medicamentos[i].descripcion
           strong="$"+medicamentos[i].precio
           br

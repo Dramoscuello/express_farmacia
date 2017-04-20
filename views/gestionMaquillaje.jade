@@ -5,7 +5,7 @@ block content
     -for(var i=0; i<maquillaje.length; ++i){
       .col-sm-6.item-med
         h4=maquillaje[i].nombre
-        img(src="img/accesorios/#{maquillaje[i].imagen}", width="200")
+        img(src="img/#{maquillaje[i].imagen}", width="200")
         p="Descripción: " + maquillaje[i].descripcion
         strong="$"+maquillaje[i].precio
         br

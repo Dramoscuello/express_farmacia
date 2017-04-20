@@ -9,7 +9,7 @@ block content
       -for(var i=0; i<hogar.length; ++i){
         .col-sm-6.item-med
           h4=hogar[i].nombre
-          img(src="img/hogar/#{hogar[i].imagen}", width="200")
+          img(src="img/#{hogar[i].imagen}", width="200")
           p="Descripción: " + hogar[i].descripcion
           strong="$"+hogar[i].precio
           br

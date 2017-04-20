@@ -5,7 +5,7 @@ block content
     -for(var i=0; i<aseo.length; ++i){
       .col-sm-6.item-med
         h4=aseo[i].nombre
-        img(src="img/hogar/#{aseo[i].imagen}", width="200")
+        img(src="img/#{aseo[i].imagen}", width="200")
         p="Descripción: " + aseo[i].descripcion
         strong="$"+aseo[i].precio
         br
