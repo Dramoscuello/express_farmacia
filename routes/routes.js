@@ -25,6 +25,8 @@ router.get('/gestionar-alimento', controllers.adminProductosController.getAlimen
 router.get('/gestionar-aseo', controllers.adminProductosController.getAseo);
 router.get('/gestionar-maquillaje', controllers.adminProductosController.getMaquillaje);
 router.get('/gestionar-medicina', controllers.adminProductosController.getMedicina);
+router.get('/agregar-producto', controllers.adminProductosController.agregarProducto);
+router.post('/agregar-producto', controllers.adminProductosController.agregarProductoPost);
 
 router.get('/gestionar-usuarios', controllers.gestionUsuariosController.getUsuarios);
 //router.get('/eliminarUsuario:id', controllers.gestionUsuariosController.deleteUsuario);
