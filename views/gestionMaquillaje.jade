@@ -8,6 +8,8 @@ block content
         img(src="img/accesorios/#{maquillaje[i].imagen}", width="200")
         p="Descripción: " + maquillaje[i].descripcion
         strong="$"+maquillaje[i].precio
+        br
+        i="Cantidad: " + maquillaje[i].cantidad
         div.container-btn
           a.button.btn-edit(href="#")
             i.fa.fa-pencil-square-o(aria-hidden="true")

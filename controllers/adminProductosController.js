@@ -5,7 +5,7 @@ module.exports = {
   getAlimentos : function(req, res, next){
     var db = mysql.createConnection(config);
 		db.connect();
-		db.query('SELECT nombre, descripcion, imagen, precio FROM productos where categoria=1', function(err, rows, fields){
+		db.query('SELECT nombre, descripcion, imagen, precio, cantidad FROM productos where categoria=1', function(err, rows, fields){
 			if(err) throw err;
 
       if(req.isAuthenticated() && req.user.rol == "1"){
@@ -20,7 +20,7 @@ module.exports = {
   getAseo : function(req, res, next){
     var db = mysql.createConnection(config);
 		db.connect();
-		db.query('SELECT nombre, descripcion, imagen, precio FROM productos where categoria=2', function(err, rows, fields){
+		db.query('SELECT nombre, descripcion, imagen, precio, cantidad FROM productos where categoria=2', function(err, rows, fields){
 			if(err) throw err;
 
       if(req.isAuthenticated() && req.user.rol == "1"){
@@ -35,7 +35,7 @@ module.exports = {
   getMaquillaje : function(req, res, next){
     var db = mysql.createConnection(config);
 		db.connect();
-		db.query('SELECT nombre, descripcion, imagen, precio FROM productos where categoria=3', function(err, rows, fields){
+		db.query('SELECT nombre, descripcion, imagen, precio, cantidad FROM productos where categoria=3', function(err, rows, fields){
 			if(err) throw err;
 
       if(req.isAuthenticated() && req.user.rol == "1"){
@@ -50,7 +50,7 @@ module.exports = {
   getMedicina : function(req, res, next){
     var db = mysql.createConnection(config);
 		db.connect();
-		db.query('SELECT nombre, descripcion, imagen, precio FROM productos where categoria=4', function(err, rows, fields){
+		db.query('SELECT nombre, descripcion, imagen, precio, cantidad FROM productos where categoria=4', function(err, rows, fields){
 			if(err) throw err;
 
       if(req.isAuthenticated() && req.user.rol == "1"){
