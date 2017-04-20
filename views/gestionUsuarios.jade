@@ -12,6 +12,6 @@ block content
         p="Telefono: " + usuarios[i].telefono
         p="Dirección: " + usuarios[i].direccion
         div.container-btn
-          a.button.btn-delete(href="#")
+          a.button.btn-delete(href="/gestionar-usuarios/eliminarUsuario/#{usuarios[i].id}")
             i.fa.fa-trash(aria-hidden="true")
     -}

@@ -29,6 +29,6 @@ router.get('/agregar-producto', controllers.adminProductosController.agregarProd
 router.post('/agregar-producto', controllers.adminProductosController.agregarProductoPost);
 
 router.get('/gestionar-usuarios', controllers.gestionUsuariosController.getUsuarios);
-//router.get('/eliminarUsuario:id', controllers.gestionUsuariosController.deleteUsuario);
+router.get('/gestionar-usuarios/eliminarUsuario/:id', controllers.gestionUsuariosController.deleteUsuario);
 
 module.exports = router;
