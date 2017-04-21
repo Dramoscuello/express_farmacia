@@ -17,8 +17,6 @@ module.exports = {
     return 0;
   },
 
-
-
   deleteAlimento: function(req, res, next){
     var db = mysql.createConnection(config);
 		db.connect();
@@ -27,5 +25,20 @@ module.exports = {
     });
     req.flash('info', 'Se ha eliminado correctamente');
     return res.redirect('/gestionar-alimento');
+  },
+
+  editarAlimento : function(req, res, next){
+    var id = req.body.id;
+    var db = mysql.createConnection(config);
+		db.connect();
+		db.query('SELECT *  FROM productos WHERE id = ' + id, function(err, rows, fields){
+			if(err) throw err;
+      if(req.isAuthenticated() && req.user.rol == "1"){
+        res.render('editar', {producto:rows[0], isAuthenticated : req.isAuthenticated(), user : req.user});
+      }else{
+        res.redirect('/');
+      }
+    });
+    return 0;
   }
 };

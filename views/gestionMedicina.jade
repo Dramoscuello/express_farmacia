@@ -6,15 +6,17 @@ block content
         //div(class='alert alert-danger' role='alert')= message
       -for(var i=0; i<medicina.length; ++i){
         .col-sm-6.item-med
-          h4=medicina[i].nombre
-          img(src="img/#{medicina[i].imagen}", width="200")
-          p="Descripción: " + medicina[i].descripcion
-          strong="$"+medicina[i].precio
-          br
-          i="Cantidad: " + medicina[i].cantidad
-          div.container-btn
-            a.button.btn-edit(href="")
-              i.fa.fa-pencil-square-o(aria-hidden="true")
-            a.button.btn-delete(href="/gestionar-medicina/eliminar/#{medicina[i].id}")
-              i.fa.fa-trash(aria-hidden="true")
+          form(action='http://localhost:8080/editar-medicina' method='post' autocomplete='off')
+            input#id_producto(type="hidden" name="id" value=medicina[i].id)
+            h4=medicina[i].nombre
+            img(src="img/#{medicina[i].imagen}", width="200")
+            p="Descripción: " + medicina[i].descripcion
+            strong="$"+medicina[i].precio
+            br
+            i="Cantidad: " + medicina[i].cantidad
+            div.container-btn
+              button.btn-edit.btn-success(type="submit")
+                span.glyphicon.glyphicon-pencil
+              a.btn-edit.btn-danger(href="http://localhost:8080/gestionar-medicina/eliminar/#{medicina[i].id}")
+                span.glyphicon.glyphicon-trash
       -}

@@ -55,15 +55,15 @@ html(lang='es')
           .navbar-header.page-scroll
             button.navbar-toggle(type='button', data-toggle='collapse', data-target='.navbar-main-collapse')
               i.fa.fa-bars
-            a.navbar-brand(href='/')
+            a.navbar-brand(href='http://localhost:8080/')
               img(src='img/logo.png', alt='', width='150', height='40')
           // Collect the nav links, forms, and other content for toggling
           .collapse.navbar-collapse.navbar-right.navbar-main-collapse
             ul.nav.navbar-nav
               li.active
-                a(href='/') Inicio
+                a(href='http://localhost:8080/') Inicio
               li
-                a(href='/#service') Servicios
+                a(href='http://localhost:8080/#service') Servicios
               if (isAuthenticated && user.rol == "2") || (!isAuthenticated)
                 li.dropdown
                   a.dropdown-toggle(href='#', data-toggle='dropdown')
@@ -72,22 +72,22 @@ html(lang='es')
                     b.caret
                   ul.dropdown-menu
                     li
-                      a(href='/alimento-y-bebidas') Alimento y bebidas
+                      a(href='http://localhost:8080/alimento-y-bebidas') Alimento y bebidas
                     li
-                      a(href='/aseo-y-hogar') Aseo y hogar
+                      a(href='http://localhost:8080/aseo-y-hogar') Aseo y hogar
                     li
-                      a(href='/maquillaje-y-accesorios') Maquillaje y accesorios
+                      a(href='http://localhost:8080/maquillaje-y-accesorios') Maquillaje y accesorios
                     li
-                      a(href='/medicamentos') Medicina formulada
+                      a(href='http://localhost:8080/medicamentos') Medicina formulada
               if !isAuthenticated
                 li.dropdown
                   a.dropdown-toggle(href='#', data-toggle='dropdown') Mi cuenta
                     b.caret
                   ul.dropdown-menu
                     li
-                      a(href='/signin') Iniciar sesion
+                      a(href='http://localhost:8080/signin') Iniciar sesion
                     li
-                      a(href='/signup') Registrarme
+                      a(href='http://localhost:8080/signup') Registrarme
               if (isAuthenticated && user.rol == "1")
                 li.dropdown
                   a.dropdown-toggle(href='#', data-toggle='dropdown')
@@ -96,24 +96,24 @@ html(lang='es')
                     b.caret
                   ul.dropdown-menu
                     li
-                      a(href="/agregar-producto") Nuevo producto
+                      a(href="http://localhost:8080/agregar-producto") Nuevo producto
                     li
-                      a(href='/gestionar-alimento') Alimento y bebidas
+                      a(href='http://localhost:8080/gestionar-alimento') Alimento y bebidas
                     li
-                      a(href='/gestionar-aseo') Aseo y hogar
+                      a(href='http://localhost:8080/gestionar-aseo') Aseo y hogar
                     li
-                      a(href='/gestionar-maquillaje') Maquillaje y accesorios
+                      a(href='http://localhost:8080/gestionar-maquillaje') Maquillaje y accesorios
                     li
-                      a(href='/gestionar-medicina') Medicina formulada
+                      a(href='http://localhost:8080/gestionar-medicina') Medicina formulada
                 li
-                  a(href='/gestionar-usuarios') Gestionar usuarios
+                  a(href='http://localhost:8080/gestionar-usuarios') Gestionar usuarios
               if isAuthenticated
                 li.dropdown
                   a.dropdown-toggle(href='#', data-toggle='dropdown')=user.nombres
                     b.caret
                   ul.dropdown-menu
                     li
-                      a(href='/logout') Cerrar sesion
+                      a(href='http://localhost:8080/logout') Cerrar sesion
               if (isAuthenticated && user.rol == "2") || (!isAuthenticated)
                 li.dropdown
                   a.dropdown-toggle(href='#', data-toggle='dropdown')

@@ -23,12 +23,16 @@ router.get('/maquillaje-y-accesorios', controllers.accesoriosController.getAcces
 
 router.get('/gestionar-alimento', controllers.gestionAlimentoController.getAlimentos);
 router.get('/gestionar-alimento/eliminar/:id', controllers.gestionAlimentoController.deleteAlimento);
+router.post('/editar-alimento', controllers.gestionAlimentoController.editarAlimento);
 router.get('/gestionar-aseo', controllers.gestionAseoController.getAseo);
 router.get('/gestionar-aseo/eliminar/:id', controllers.gestionAseoController.deleteAseo);
+router.post('/editar-aseo', controllers.gestionAseoController.editarAseo);
 router.get('/gestionar-maquillaje', controllers.gestionMaqController.getMaquillaje);
 router.get('/gestionar-maquillaje/eliminar/:id', controllers.gestionMaqController.deleteMaquillaje);
+router.post('/editar-maquillaje', controllers.gestionMaqController.editarMaquillaje);
 router.get('/gestionar-medicina', controllers.gestionMedicinaController.getMedicina);
 router.get('/gestionar-medicina/eliminar/:id', controllers.gestionMedicinaController.deleteMedicina);
+router.post('/editar-medicina', controllers.gestionMedicinaController.editarMedicina);
 router.get('/agregar-producto', controllers.adminProductosController.agregarProducto);
 router.post('/agregar-producto', controllers.adminProductosController.agregarProductoPost);
 
