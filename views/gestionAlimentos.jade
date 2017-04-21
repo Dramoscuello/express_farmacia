@@ -3,7 +3,7 @@ block content
   .container.intro-med
     div(class='row')
       if message.length > 0
-        div(class='alert alert-danger' role='alert')= message
+        div(class='alert alert-success' role='alert')= message
       -for(var i=0; i<alimentos.length; ++i){
         .col-sm-6.item-med
           form(action='http://localhost:8080/editar-alimento' method='post' autocomplete='off')

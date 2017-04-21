@@ -35,6 +35,7 @@ router.get('/gestionar-medicina/eliminar/:id', controllers.gestionMedicinaContro
 router.post('/editar-medicina', controllers.gestionMedicinaController.editarMedicina);
 router.get('/agregar-producto', controllers.adminProductosController.agregarProducto);
 router.post('/agregar-producto', controllers.adminProductosController.agregarProductoPost);
+router.post('/actualizar-producto', controllers.adminProductosController.actualizarProducto);
 
 router.get('/gestionar-usuarios', controllers.gestionUsuariosController.getUsuarios);
 router.get('/gestionar-usuarios/eliminarUsuario/:id', controllers.gestionUsuariosController.deleteUsuario);

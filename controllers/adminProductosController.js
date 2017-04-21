@@ -30,5 +30,39 @@ module.exports = {
 		});
     req.flash('info', '¡Producto registrado correctamente!');
     return res.redirect('/agregar-producto');
+  },
+
+  actualizarProducto:function(req, res, next){
+    var id = req.body.id;
+    var nombre = req.body.producto;
+    var descripcion = req.body.descripcion;
+		var	precio = req.body.precio;
+    var categoria = req.body.categoria;
+    var cantidad = req.body.cantidad;
+    var db = mysql.createConnection(config);
+		db.connect();
+		db.query('UPDATE productos SET nombre = ?, descripcion = ?, precio = ?, categoria = ?, cantidad = ? WHERE id = ?', [nombre,descripcion,precio,categoria,cantidad,id], function(err, rows, fields){
+			if(err) throw err;
+			db.end();
+		});
+    switch(categoria){
+      case "1":
+        req.flash('info', '¡Producto actualizado correctamente!');
+        res.redirect('/gestionar-alimento');
+        break;
+      case "2":
+        req.flash('info', '¡Producto actualizado correctamente!');
+        res.redirect('/gestionar-aseo');
+        break;
+      case "3":
+        req.flash('info', '¡Producto actualizado correctamente!');
+        res.redirect('/gestionar-maquillaje');
+        break;
+      case "4":
+        req.flash('info', '¡Producto actualizado correctamente!');
+        res.redirect('/gestionar-medicina');
+        break;
+    }
+    return 0;
   }
 };
