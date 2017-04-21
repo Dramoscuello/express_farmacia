@@ -21,14 +21,14 @@ router.get('/alimento-y-bebidas', controllers.alimentoController.getAlimento);
 router.get('/aseo-y-hogar', controllers.hogarController.getHogar);
 router.get('/maquillaje-y-accesorios', controllers.accesoriosController.getAccesorios);
 
-router.get('/gestionar-alimento', controllers.adminProductosController.getAlimentos);
-router.get('/gestionar-alimento/eliminar/:id', controllers.adminProductosController.deleteAlimento);
-router.get('/gestionar-aseo', controllers.adminProductosController.getAseo);
-router.get('/gestionar-aseo/eliminar/:id', controllers.adminProductosController.deleteAseo);
-router.get('/gestionar-maquillaje', controllers.adminProductosController.getMaquillaje);
-router.get('/gestionar-maquillaje/eliminar/:id', controllers.adminProductosController.deleteMaquillaje);
-router.get('/gestionar-medicina', controllers.adminProductosController.getMedicina);
-router.get('/gestionar-medicina/eliminar/:id', controllers.adminProductosController.deleteMedicina);
+router.get('/gestionar-alimento', controllers.gestionAlimentoController.getAlimentos);
+router.get('/gestionar-alimento/eliminar/:id', controllers.gestionAlimentoController.deleteAlimento);
+router.get('/gestionar-aseo', controllers.gestionAseoController.getAseo);
+router.get('/gestionar-aseo/eliminar/:id', controllers.gestionAseoController.deleteAseo);
+router.get('/gestionar-maquillaje', controllers.gestionMaqController.getMaquillaje);
+router.get('/gestionar-maquillaje/eliminar/:id', controllers.gestionMaqController.deleteMaquillaje);
+router.get('/gestionar-medicina', controllers.gestionMedicinaController.getMedicina);
+router.get('/gestionar-medicina/eliminar/:id', controllers.gestionMedicinaController.deleteMedicina);
 router.get('/agregar-producto', controllers.adminProductosController.agregarProducto);
 router.post('/agregar-producto', controllers.adminProductosController.agregarProductoPost);
 

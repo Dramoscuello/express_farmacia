@@ -2,8 +2,8 @@ extends layout
 block content
   .container.intro-med
     div(class='row')
-      if message.length > 0
-        div(class='alert alert-danger' role='alert')= message
+      //if message.length > 0
+        //div(class='alert alert-danger' role='alert')= message
       -for(var i=0; i<medicina.length; ++i){
         .col-sm-6.item-med
           h4=medicina[i].nombre
@@ -13,7 +13,7 @@ block content
           br
           i="Cantidad: " + medicina[i].cantidad
           div.container-btn
-            a.button.btn-edit(href="#")
+            a.button.btn-edit(href="")
               i.fa.fa-pencil-square-o(aria-hidden="true")
             a.button.btn-delete(href="/gestionar-medicina/eliminar/#{medicina[i].id}")
               i.fa.fa-trash(aria-hidden="true")
