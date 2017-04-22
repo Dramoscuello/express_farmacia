@@ -114,11 +114,6 @@ html(lang='es')
                   ul.dropdown-menu
                     li
                       a(href='http://localhost:8080/logout') Cerrar sesion
-              if (isAuthenticated && user.rol == "2") || (!isAuthenticated)
-                li.dropdown
-                  a.dropdown-toggle(href='#', data-toggle='dropdown')
-                    span.badge.custom-badge.red.pull-right 0
-                    | <i class="fa fa-shopping-cart fa-2x" aria-hidden="true"></i>
 
       block content
 

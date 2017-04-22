@@ -13,5 +13,9 @@ block content
           p="Descripción: " + alimentos[i].descripcion
           strong="$"+alimentos[i].precio
           br
-          button.cart="Comprar"
+          if(isAuthenticated)
+            button.cart.producto(precio=alimentos[i].precio titulo=alimentos[i].nombre)="Comprar"
+          if(!isAuthenticated)
+            form(action="http://localhost:8080/signin")
+              button.cart="Comprar"
       -}

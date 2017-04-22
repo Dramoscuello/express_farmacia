@@ -64,5 +64,18 @@ module.exports = {
         break;
     }
     return 0;
+  },
+
+  eliminarProducto:function(req, res, next){
+    var id = req.body.id;
+	  var db = mysql.createConnection(config);
+	  var respuesta={res:false};
+	  db.connect();
+	  db.query('DELETE FROM productos where id = ' + id, function(err,rows,fields){
+			if(err)throw err;
+			db.end();
+			respuesta.res=true;
+	    res.json(respuesta);
+		});
   }
 };

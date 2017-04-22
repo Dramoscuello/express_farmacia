@@ -11,20 +11,10 @@ module.exports = {
       if(req.isAuthenticated() && req.user.rol == "1"){
         res.render('gestionAlimentos', {alimentos: rows, isAuthenticated : req.isAuthenticated(), user : req.user, message: req.flash('info')});
       }else{
-        res.redirect('/');
+        res.render('alimentos', { alimentos: rows, isAuthenticated : req.isAuthenticated(), user : req.user });
       }
     });
     return 0;
-  },
-
-  deleteAlimento: function(req, res, next){
-    var db = mysql.createConnection(config);
-		db.connect();
-		db.query('DELETE FROM productos WHERE id = ' + [req.params.id], function(err, rows, fields){
-			if(err) throw err;
-    });
-    req.flash('info', 'Se ha eliminado correctamente');
-    return res.redirect('/gestionar-alimento');
   },
 
   editarAlimento : function(req, res, next){

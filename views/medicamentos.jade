@@ -13,5 +13,9 @@ block content
           p="Descripción: " + medicamentos[i].descripcion
           strong="$"+medicamentos[i].precio
           br
-          button.cart="Comprar"
+          if(isAuthenticated)
+            button.cart.producto(precio=medicamentos[i].precio titulo=medicamentos[i].nombre)="Comprar"
+          if(!isAuthenticated)
+            form(action="http://localhost:8080/signin")
+              button.cart="Comprar"
       -}

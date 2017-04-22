@@ -9,7 +9,7 @@ module.exports = {
 			if(err) throw err;
 
       if(req.isAuthenticated() && req.user.rol == "1"){
-        res.render('gestionUsuarios', {usuarios: rows, isAuthenticated : req.isAuthenticated(), user : req.user, message: req.flash('info')});
+        res.render('gestionUsuarios', {usuarios: rows, isAuthenticated : req.isAuthenticated(), user : req.user});
       }else{
         res.redirect('/');
       }
@@ -18,13 +18,15 @@ module.exports = {
   },
 
   deleteUsuario : function(req, res, next){
-    //console.log(req.params.id);
-    var db = mysql.createConnection(config);
-		db.connect();
-		db.query('DELETE FROM users WHERE id = ' + [req.params.id], function(err, rows, fields){
-			if(err) throw err;
-    });
-    req.flash('info', 'Se ha eliminado el usuario');
-    return res.redirect('/gestionar-usuarios');
+    var id = req.body.id;
+	  var db = mysql.createConnection(config);
+	  var respuesta={res:false};
+	  db.connect();
+	  db.query('DELETE FROM users where id = ' + id, function(err,rows,fields){
+			if(err)throw err;
+			db.end();
+			respuesta.res=true;
+	    res.json(respuesta);
+		});
   }
 };
