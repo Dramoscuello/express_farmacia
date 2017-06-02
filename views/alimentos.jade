@@ -14,7 +14,9 @@ block content
           strong="$"+alimentos[i].precio
           br
           if(isAuthenticated)
-            button.cart.producto(precio=alimentos[i].precio titulo=alimentos[i].nombre)="Comprar"
+            button.producto.paypal(precio=alimentos[i].precio titulo=alimentos[i].nombre)="Paypal"
+            span.pading
+            button.cart()="Comprar"
           if(!isAuthenticated)
             form(action="http://localhost:8080/signin")
               button.cart="Comprar"

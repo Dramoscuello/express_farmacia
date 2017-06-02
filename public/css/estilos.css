@@ -18,8 +18,6 @@
 
 .cart{
   border: none;
-  background: #3FBBC0;
-  color: #f2f2f2;
   padding: 10px 35px;
   overflow:hidden;
   font-size: 18px;
@@ -28,6 +26,8 @@
   box-sizing: border-box;
   transition: all 500ms ease;
   margin-top: 2%;
+  color: white;
+  background-color: #3FBBC0;
 }
 
 .btn-edit{
@@ -64,4 +64,41 @@
 
 .titular{
   margin-bottom: 5%;
+}
+
+.pading{
+  margin: auto 2%;
+}
+
+
+.paypal{
+  border: none;
+  padding: 10px 35px;
+  overflow:hidden;
+  font-size: 18px;
+  border-radius: 5px;
+  position: relative;
+  box-sizing: border-box;
+  transition: all 500ms ease;
+  margin-top: 2%;
+  color: #1D3565;
+  /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#fceabb+0,fccd4d+39,f8b500+50,e4910f+86,fbdf93+100 */
+background: #fceabb; /* Old browsers */
+background: -moz-linear-gradient(top, #fceabb 0%, #fccd4d 39%, #f8b500 50%, #e4910f 86%, #fbdf93 100%); /* FF3.6-15 */
+background: -webkit-linear-gradient(top, #fceabb 0%,#fccd4d 39%,#f8b500 50%,#e4910f 86%,#fbdf93 100%); /* Chrome10-25,Safari5.1-6 */
+background: linear-gradient(to bottom, #fceabb 0%,#fccd4d 39%,#f8b500 50%,#e4910f 86%,#fbdf93 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fceabb', endColorstr='#fbdf93',GradientType=0 ); /* IE6-9 */
+}
+
+.paypal:before{
+  font-family: FontAwesome;
+  content:"\f1ed";
+  position: absolute;
+  top: 11px;
+  left: -30px;
+  transition: all 200ms ease;
+}
+
+.paypal:hover:before {
+ left: 7px;
 }
