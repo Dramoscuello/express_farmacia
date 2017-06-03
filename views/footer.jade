@@ -91,6 +91,7 @@ script(src='https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.2.0/socket.io.js'
 script(src="https://use.fontawesome.com/7f08727939.js")
 script(src="js/minicart.min.js")
 script(src='https://cdnjs.cloudflare.com/ajax/libs/lodash.js/3.10.1/lodash.min.js')
+script(src="js/jspdf.min.js")
 
 script(type='text/javascript').
   var socket = io.connect("http://localhost:3000");
@@ -260,36 +261,52 @@ script(type='text/javascript').
         total = total  + (n.cant * n.price);
         items += '<li>';
         items += '<img src="'+n.img+'" />';
-        items += '<h3 class="title">'+n.name+'<br><span class="price">'+n.cant+' x $ '+n.price+' COP</span><button onclick="deleteProd('+n.id+')" ><i class="icon ion-close-circled"></i></button><div class="clearfix"></div></h3>';
+        items += '<h3 class="title">'+n.name+'<br><span class="price">'+n.cant+' x $ '+n.price+' COP</span><button onclick="deleteProd('+n.id+')" ><i class="icon ion-close-circled"></i></button></h3>';
         items += '</li>';
       });
-      items += '<li id="total">Total : $ '+total+' COP </li>';
+      items += '<li id="total">Total : $ '+total+' COP <button onclick="generarpdf()">Pagar &nbsp;</button></li>';
       wrapper.html(items);
       $('.cart1').css('left','-500%');
     }
   }
 
-  //delete = function(id){
-    //var cart = (JSON.parse(localStorage.getItem('cart')) != null) ? JSON.parse(localStorage.getItem('cart')) : {items : []} ;
-    //var curProd = _.find(cart.items, { 'id': id });
-    //_.remove(cart.items, curProd);
-    //localStorage.setItem('cart',JSON.stringify(cart));
-    //init();
-    //getProducts();
-  //}
+  deleteP = function(id){
+    var cart = (JSON.parse(localStorage.getItem('cart')) != null) ? JSON.parse(localStorage.getItem('cart')) : {items : []} ;
+    var curProd = _.find(cart.items, { 'id': id });
+    _.remove(cart.items, curProd);
+    localStorage.setItem('cart',JSON.stringify(cart));
+    init();
+    getProducts();
+  }
 
-  //deleteProd = function(id,remove){
-    //if(undefined != id && id > 0){
-      //if(remove == true){
-        //delete(id)
-      //}else{
-        //var conf = confirm('¿Deseas eliminar este producto?')
-        //if(conf){
-          //delete(id)
-        //}
-      //}
-    //}
-  //}
+  deleteProd = function(id,remove){
+    if(undefined != id && id > 0){
+      if(remove == true){
+        deleteP(id)
+      }else{
+        var conf = confirm('¿Deseas eliminar este producto?')
+        if(conf){
+          deleteP(id)
+        }
+      }
+    }
+  }
+
+  function generarpdf(){
+    var line = 10;
+    var doc = new jsPDF();
+    var cart = (JSON.parse(localStorage.getItem('cart')) != null) ? JSON.parse(localStorage.getItem('cart')) : {items : []} ;
+    if(undefined != cart && null != cart && cart != ''){
+      var i = 1;
+      _.forEach(cart.items, function(prod, key) {
+        line += 10;
+        doc.text(20, line, prod.name + ' ' + prod.price + ' ' +  prod.cant);
+        i++;
+      });
+    }
+    //doc.text(20, line+10, );
+    doc.save('factura.pdf');
+  }
 
   $(document).ready(function(){
     init();
