@@ -16,7 +16,7 @@ block content
           if(isAuthenticated)
             button.producto.paypal(precio=hogar[i].precio titulo=hogar[i].nombre)="Paypal"
             span.pading
-            button.cart()="Comprar"
+            button.cart(id=hogar[i].id nombre=hogar[i].nombre precio=hogar[i].precio imagen="img/"+hogar[i].imagen cantidad=hogar[i].cantidad onclick="addtoCart("+hogar[i].id+")")="Comprar"
           if(!isAuthenticated)
             form(action="http://localhost:8080/signin")
               button.cart="Comprar"

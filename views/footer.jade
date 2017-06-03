@@ -187,8 +187,14 @@ script(type='text/javascript').
     });
   });
 
+
+
+
+
+//AQUI COMIENZA LA PARTE DE LOCALSTORAGE Y CARRITO DE COMPRAS
 script(type='text/javascript').
-  init = function(){
+  var ttotal = 0;
+  init = function(){//Es la función principal, se encarga de verificar que hayan productos en la canasta de compra
     var total = 0;
     var items = 0;
     var cart = (JSON.parse(localStorage.getItem('cart')) != null) ? JSON.parse(localStorage.getItem('cart')) : {items : []} ;
@@ -199,10 +205,10 @@ script(type='text/javascript').
       });
     }
     $('#totalItems').text(items);
-    $('.totalAmount').text('$ '+total+ ' COP');
+    ttotal = total;
   }
 
-  addtoCart = function(id){
+  addtoCart = function(id){//Añade un producto a la canasta de compra
     var elemento = document.getElementById(id);
     var nombre = elemento.getAttribute('nombre');
     var precio = elemento.getAttribute('precio');
@@ -222,7 +228,7 @@ script(type='text/javascript').
     }
   }
 
-  searchProd = function(cart,id,cant,name,price,img,available){
+  searchProd = function(cart,id,cant,name,price,img,available){//Busca un producto dentro de la canasta y verifica las cantidades para no sobrepasar las existentes en stock.
     var curProd = _.find(cart.items, { 'id': id });
     if(undefined != curProd && curProd != null){
       if(curProd.cant < available){
@@ -246,7 +252,7 @@ script(type='text/javascript').
     getProducts();
   }
 
-  getProducts = function(){
+  getProducts = function(){//Es la encargada de actualizar la canasta de compra, cada vez que se agrega, edita o elimina un registro de la canasta.
     var cart = (JSON.parse(localStorage.getItem('cart')) != null) ? JSON.parse(localStorage.getItem('cart')) : {items : []};
     var msg = '';
     var wrapper = $('.cart1');
@@ -264,13 +270,13 @@ script(type='text/javascript').
         items += '<h3 class="title">'+n.name+'<br><span class="price">'+n.cant+' x $ '+n.price+' COP</span><button onclick="deleteProd('+n.id+')" ><i class="icon ion-close-circled"></i></button></h3>';
         items += '</li>';
       });
-      items += '<li id="total">Total : $ '+total+' COP <button onclick="generarpdf()">Pagar &nbsp;</button></li>';
+      items += '<li id="total">Total : $ '+total+' COP <button class="pay" onclick="generarpdf()">Pagar &nbsp;</button></li>';
       wrapper.html(items);
       $('.cart1').css('left','-500%');
     }
   }
 
-  deleteP = function(id){
+  deleteP = function(id){//Función encargada de eliminar un producto definitivamente de la canasta (recibe un parámetro boleano, para que no salte la ventana de confirmación)
     var cart = (JSON.parse(localStorage.getItem('cart')) != null) ? JSON.parse(localStorage.getItem('cart')) : {items : []} ;
     var curProd = _.find(cart.items, { 'id': id });
     _.remove(cart.items, curProd);
@@ -279,7 +285,7 @@ script(type='text/javascript').
     getProducts();
   }
 
-  deleteProd = function(id,remove){
+  deleteProd = function(id,remove){//Nos permite eliminar un producto de manera definitiva de la canasta
     if(undefined != id && id > 0){
       if(remove == true){
         deleteP(id)
@@ -292,7 +298,7 @@ script(type='text/javascript').
     }
   }
 
-  function generarpdf(){
+  function generarpdf(){//Aqui se genera el pdf
     var line = 10;
     var doc = new jsPDF();
     var cart = (JSON.parse(localStorage.getItem('cart')) != null) ? JSON.parse(localStorage.getItem('cart')) : {items : []} ;
@@ -304,7 +310,7 @@ script(type='text/javascript').
         i++;
       });
     }
-    //doc.text(20, line+10, );
+    doc.text(20, line+10, String(ttotal));//este total esta en la funcion init
     doc.save('factura.pdf');
   }
 
