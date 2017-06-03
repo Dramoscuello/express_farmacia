@@ -90,6 +90,7 @@ script(src='js/chat.js')
 script(src='https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.2.0/socket.io.js')
 script(src="https://use.fontawesome.com/7f08727939.js")
 script(src="js/minicart.min.js")
+script(src='https://cdnjs.cloudflare.com/ajax/libs/lodash.js/3.10.1/lodash.min.js')
 
 script(type='text/javascript').
   var socket = io.connect("http://localhost:3000");
@@ -184,3 +185,113 @@ script(type='text/javascript').
      	}
     });
   });
+
+script(type='text/javascript').
+  init = function(){
+    var total = 0;
+    var items = 0;
+    var cart = (JSON.parse(localStorage.getItem('cart')) != null) ? JSON.parse(localStorage.getItem('cart')) : {items : []} ;
+    if(undefined != cart.items && cart.items != null && cart.items != '' && cart.items.length > 0){
+      _.forEach(cart.items, function(n, key) {
+        items = (items + n.cant);
+        total = total  + (n.cant * n.price);
+      });
+    }
+    $('#totalItems').text(items);
+    $('.totalAmount').text('$ '+total+ ' COP');
+  }
+
+  addtoCart = function(id){
+    var elemento = document.getElementById(id);
+    var nombre = elemento.getAttribute('nombre');
+    var precio = elemento.getAttribute('precio');
+    var imagen = elemento.getAttribute('imagen');
+    var cantidad = elemento.getAttribute('cantidad');
+    //alert(nombre + ' ' + precio + ' ' + imagen + ' ' + cantidad);
+    var cant = 1;
+    if(cant <= parseInt(cantidad)){
+      if(cant > 0){
+        var cart = (JSON.parse(localStorage.getItem('cart')) != null) ? JSON.parse(localStorage.getItem('cart')) : {items : []} ;
+        searchProd(cart, id, parseInt(cant), nombre, precio, imagen, cantidad);
+      }else{
+        alert('Solo se permiten cantidades mayores a cero');
+      }
+    }else{
+      alert('No se pueden añadir más de este producto');
+    }
+  }
+
+  searchProd = function(cart,id,cant,name,price,img,available){
+    var curProd = _.find(cart.items, { 'id': id });
+    if(undefined != curProd && curProd != null){
+      if(curProd.cant < available){
+        curProd.cant = parseInt(curProd.cant + cant)
+      }else{
+        alert('No se pueden añadir más de este producto')
+      }
+    }else{
+      var prod = {
+      id : id,
+      cant : cant,
+      name : name,
+      price : price,
+      img : img,
+      available : available
+      }
+      cart.items.push(prod);
+    }
+    localStorage.setItem('cart',JSON.stringify(cart));
+    init();
+    getProducts();
+  }
+
+  getProducts = function(){
+    var cart = (JSON.parse(localStorage.getItem('cart')) != null) ? JSON.parse(localStorage.getItem('cart')) : {items : []};
+    var msg = '';
+    var wrapper = $('.cart1');
+    var total = 0;
+    wrapper.html('');
+    if(undefined == cart || null == cart || cart == '' || cart.items.length == 0){
+      wrapper.html('<li>Tu canasta está vacía</li>');
+      $('.cart1').css('left','-400%')
+    }else{
+      var items = '';
+      _.forEach(cart.items, function(n, key) {
+        total = total  + (n.cant * n.price);
+        items += '<li>';
+        items += '<img src="'+n.img+'" />';
+        items += '<h3 class="title">'+n.name+'<br><span class="price">'+n.cant+' x $ '+n.price+' COP</span><button onclick="deleteProd('+n.id+')" ><i class="icon ion-close-circled"></i></button><div class="clearfix"></div></h3>';
+        items += '</li>';
+      });
+      items += '<li id="total">Total : $ '+total+' COP </li>';
+      wrapper.html(items);
+      $('.cart1').css('left','-500%');
+    }
+  }
+
+  //delete = function(id){
+    //var cart = (JSON.parse(localStorage.getItem('cart')) != null) ? JSON.parse(localStorage.getItem('cart')) : {items : []} ;
+    //var curProd = _.find(cart.items, { 'id': id });
+    //_.remove(cart.items, curProd);
+    //localStorage.setItem('cart',JSON.stringify(cart));
+    //init();
+    //getProducts();
+  //}
+
+  //deleteProd = function(id,remove){
+    //if(undefined != id && id > 0){
+      //if(remove == true){
+        //delete(id)
+      //}else{
+        //var conf = confirm('¿Deseas eliminar este producto?')
+        //if(conf){
+          //delete(id)
+        //}
+      //}
+    //}
+  //}
+
+  $(document).ready(function(){
+    init();
+    getProducts();
+  })
